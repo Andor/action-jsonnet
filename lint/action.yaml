@@ -1,0 +1,16 @@
+name: 'jsonnet-lint'
+description: 'Run jsonnet-lint to check if jsonnet files are formatted in current workspace'
+inputs:
+  targets:
+    description: |
+      list of files to run jsonnet-lint on (i.e., *.jsonnet, *.libsonnet)
+    required: true
+    default: |
+      *.jsonnet
+      *.libsonnet
+branding:
+  icon: 'feather'
+  color: 'blue'
+runs:
+  using: 'docker'
+  image: '../Dockerfile'
