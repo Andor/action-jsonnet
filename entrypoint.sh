@@ -5,7 +5,7 @@ set -Eeuo pipefail
 jsonnet::tool() {
     tool=$1; shift
     : "${GITHUB_WORKSPACE?GITHUB_WORKSPACE has to be set. Did you use the actions/checkout action?}"
-    : "${TARGETS?No targets to check. Nothing to do.}"
+    : "${INPUT_TARGETS?No targets to check. Nothing to do.}"
 
     cd "${GITHUB_WORKSPACE}"
     >&2 echo -e "\nRunning $tool...\n"
@@ -14,11 +14,11 @@ jsonnet::tool() {
     shopt -s globstar
     case $tool in
         jsonnetfmt)
-            jsonnetfmt --test ${TARGETS}
+            jsonnetfmt --test ${INPUT_TARGETS}
             # -n 2 --max-blank-lines 2 --string-style s --comment-style s
             ;;
         jsonnet-lint)
-            jsonnet-lint ${TARGETS}
+            jsonnet-lint ${INPUT_TARGETS}
             ;;
         *)
             echo -E "Tool $tool is not known"
