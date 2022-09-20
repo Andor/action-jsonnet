@@ -1,0 +1,51 @@
+* jsonentfmt
+** Example
+#+begin_src yaml
+---
+name: jsonnetfmt check
+
+on:
+  - push
+
+jobs:
+  jsonnetfmt:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: Andor/action-jsonnet/fmt@master
+        with:
+          targets: |
+            *.jsonnet
+            *.libsonnet
+            components/*.jsonnet
+            components/**/*.jsonnet
+            environments/*.libsonnet
+#+end_src
+
+* jsonnet-lint
+** Example
+#+begin_src yaml
+---
+name: jsonnet-lint check
+
+on:
+  - push
+
+jobs:
+  jsonnet-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: Andor/action-jsonnet/lint@master
+        with:
+          targets: |
+            *.jsonnet
+            *.libsonnet
+            components/*.jsonnet
+            components/**/*.jsonnet
+            environments/*.libsonnet
+#+end_src
