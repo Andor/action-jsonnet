@@ -13,8 +13,9 @@ LABEL "com.github.actions.color"="gray-dark"
 # update to stable after https://github.com/google/go-jsonnet/pull/623 will be in the release
 ENV JSONNET_REF=cb3a7596213eb45d203d77287ead26dbe452bd92
 RUN \
-  go install github.com/google/go-jsonnet/cmd/jsonnet-lint@$JSONNET_REF && \
-  go install github.com/google/go-jsonnet/cmd/jsonnetfmt@$JSONNET_REF
+  go install \
+  github.com/google/go-jsonnet/cmd/jsonnet-lint@$JSONNET_REF \
+  github.com/google/go-jsonnet/cmd/jsonnetfmt@$JSONNET_REF
 
 COPY entrypoint.sh /entrypoint.sh
 
