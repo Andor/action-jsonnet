@@ -1,3 +1,4 @@
+---
 name: 'jsonnet tools: jsonnet-lint'
 description: 'Run jsonnet-lint to check if jsonnet files are formatted in current workspace'
 inputs:
